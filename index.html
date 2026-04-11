@@ -106,6 +106,8 @@
       background: var(--white); padding: 35px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(13,77,134,0.05); transition: var(--transition);
     }
     .card:hover { transform: translateY(-8px); }
+	.card p { text-align: justify; hyphens: auto; }
+	.tag { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #f1f5f8; color: var(--steel); font-size: 0.9rem; font-weight: 600; }
 
     .footer { background: #0a1f34; color: rgba(255,255,255,0.8); padding: 40px 0; }
 
@@ -183,16 +185,36 @@
 
       <div class="cards-grid">
         <article class="card">
-          <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose USB-C</h3>
-          <p>Dosimétrie en temps réel sur smartphone avec une interface mobile intuitive.</p>
+		  <div>
+		    <img src="img/smartdose_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
+		  </div>
+          <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose – Dosimétrie intelligente en temps réel sur mobile</h3>
+          <p>Une technologie compacte et connectée qui révolutionne la mesure des rayonnements en intégrant performance, mobilité et intelligence directement dans votre smartphone.</p>
+		  <p>Solution portable de dosimétrie connectée offrant une lecture instantanée des rayonnements avec une précision clinique, idéale pour les professionnels de santé et de radioprotection.</p>
+		  <span class="tag"><a href="#accueil">Consulter</a></span>
+		</article>
+        <article class="card">
+		<div>
+		    <img src="img/sonde_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
+		  </div>
+          <h3 style="color:var(--primary); margin-bottom:15px;">DoseStylus</h3>
+		  <p>Détecteur intelligent de nouvelle génération, conçu pour des mesures fines et localisées en environnement clinique. Connecté au smartphone, 
+		  il permet une visualisation en temps réel, un monitoring avancé et une exploitation précise des données dosimétriques, avec une ergonomie inspirée des sondes stylet de référence.
+		  </p>
+		  <p>Un détecteur intelligent, compact et connecté, offrant une précision de mesure exceptionnelle. Associé à une application mobile, il permet un affichage en temps réel, 
+		  un suivi continu et une analyse avancée des rayonnements, redéfinissant l’usage des sondes de type stylet en milieu clinique.</p>
+		  <span class="tag"><a href="#accueil">Consulter</a></span>
         </article>
         <article class="card">
-          <h3 style="color:var(--primary); margin-bottom:15px;">Sonde "Stylo"</h3>
-          <p>Géométrie fine pour une manipulation précise en environnements cliniques.</p>
-        </article>
-        <article class="card">
-          <h3 style="color:var(--primary); margin-bottom:15px;">Radiomètres IoT</h3>
-          <p>Monitoring sans fil et cartographie automatisée pour environnements complexes.</p>
+		<div>
+		    <img src="img/iot_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
+		  </div>
+          <h3 style="color:var(--primary); margin-bottom:15px;">DoseGrid - Radiamètres IoT</h3>
+          <p>Réseau intelligent de radiomètres connectés permettant une surveillance en temps réel, 
+		  une acquisition distribuée et une cartographie automatisée des rayonnements, même dans les environnements les plus complexes.</p>
+		  <p> Système de monitoring sans fil basé sur un réseau de capteurs intelligents, offrant une visualisation en temps réel et 
+		  une cartographie dynamique des niveaux de rayonnement pour une gestion optimisée des environnements complexes.</p>
+		  <span class="tag"><a href="#accueil">Consulter</a></span>
         </article>
       </div>
     </div>
@@ -220,7 +242,7 @@
   <footer class="footer">
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
       <p>© 2026 Dosirad — Tous droits réservés.</p>
-      <a href="https://www.uh1.ac.ma/" target="_blank">UH1 Settat</a>
+      <a href="https://www.phantorad.com/" target="_blank">Phantorad.com</a>
     </div>
   </footer>
 
