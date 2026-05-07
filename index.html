@@ -127,6 +127,19 @@
       }
       .nav-menu.active { transform: translateY(0); opacity: 1; }
     }
+	.solutions-description {
+    line-height: 1.8; /* Augmente l'espacement entre les lignes pour la lisibilité */
+    color: #444;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Aligné à gauche pour faciliter la lecture des tirets */
+    font-size: 1.05rem;
+    }
+
+    .solutions-description strong {
+    color: #007bff; /* Utilise le bleu de votre logo pour souligner les mots-clés */
+    font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -153,7 +166,7 @@
   <section class="hero" id="accueil">
     <div class="container hero-grid">
       <div class="hero-text-content">
-        <div class="badge">Détection active • Temps réel • USB-C • IoT</div>
+        <div class="badge">Miniaturisation • Instantanéité • Connectivité Cloud • Capteurs Nano</div>
         <h1>La dosimétrie active réinventée : Plus compacte, plus abordable, maniable et économique
 </h1>
         <p>
@@ -181,7 +194,17 @@
       <div class="section-title">
         <span class="eyebrow">Solutions</span>
         <h2>Instrumentation moderne</h2>
-        <p>Des dispositifs miniaturisés et connectés pour transformer la lecture des rayonnements.</p>
+		<p class="solutions-description">
+         Des dispositifs miniaturisés et connectés pour transformer la lecture des rayonnements.<br>
+            — <strong>Dosimétrie "Plug & Play"</strong> : facilité de connexion USB-C.<br>
+            — <strong>Nano-capteurs actifs</strong> : taille ultra-réduite par rapport aux puces passives.<br>
+            — <strong>Dosimétrie 4.0</strong> : positionnée dans l'ère de la santé connectée.<br>
+            — <strong>Monitoring "Live-Dose"</strong> : un terme plus dynamique pour le temps réel.<br>
+            — <strong>Radioprotection connectée</strong> : lier la sécurité du personnel à l'aspect IoT.<br>
+            — <strong>Zéro-latence dosimétrique</strong> : lecture instantanée sans les délais des OSL/TLD.<br>
+            — <strong>Dosimétrie Nomade</strong> : le système s'utilise partout via smartphone.<br>
+            — <strong>Interface App-Centric</strong> : exploitation immédiate des données sur mobile.
+        </p>
       </div>
 
       <div class="cards-grid">
@@ -194,6 +217,18 @@
 		  <p>Solution portable de dosimétrie connectée offrant une lecture instantanée des rayonnements avec une précision clinique, idéale pour les professionnels de santé et de radioprotection.</p>
 		  <span class="tag"><a href="#accueil">Consulter</a></span>
 		</article>
+		
+		<article class="card">
+          <div>
+            <img src="img/smartdose_app.png" alt="SmartDose App - Interface Android" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
+          </div>
+           <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose App (Android)</h3>
+           <p> L'interface numérique indispensable pour transformer votre smartphone en un analyseur de rayonnement de haute précision. 
+                Elle centralise les flux de données provenant de vos capteurs pour une gestion proactive et intuitive de la dose.</p>
+           <p> Offre une visualisation instantanée (Live-Dose), des graphiques dynamiques pour identifier les pics d'exposition et une gestion intelligente des alertes. 
+		   L'outil permet également l'exportation simplifiée des rapports (PDF/CSV) et une synchronisation cloud pour une traçabilité totale.</p>
+           <span class="tag"><a href="#accueil">Consulter</a></span>
+        </article>
 		
         <article class="card">
 		<div>
@@ -241,16 +276,20 @@
     <div class="container">
       <div class="section-title">
         <span class="eyebrow">Contact</span>
-        <h2>Parlons de vos projets</h2>
       </div>
       <div class="contact-grid">
         <div class="contact-card">
           <h3>Email</h3>
-          <p>contact@dosirad.com</p>
+          <p>doc.omarel@gmail.com</p>
+		  <p>omar.elrhazouani@uhp.ac.ma.com</p>
+        </div>
+		<div class="contact-card">
+          <h3>Tél./Whatsapp:</h3>
+          <p>+212601251462</p>
         </div>
         <div class="contact-card">
           <h3>Partenaire</h3>
-          <p>Phantorad.com</p>
+          <p><a href="https://phantorad.com/" target="_blank">Phantorad.com</a></p>
         </div>
       </div>
     </div>
