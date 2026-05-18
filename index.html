@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dosirad | Dosimétrie Active des Rayonnement Ionnisants</title>
-  <meta name="description" content="Dosirad - Solutions de détection active, dosimétrie en temps réel, IoT et instrumentation intelligente." />
+  <title>Dosirad | Active Dosimetry of Ionizing Radiation</title>
+  <meta name="description" content="Dosirad - Active detection solutions, real-time dosimetry, IoT and intelligent instrumentation." />
   <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
   <style>
     :root {
@@ -112,6 +112,58 @@
 
     .footer { background: #0a1f34; color: rgba(255,255,255,0.8); padding: 40px 0; }
 
+    .language-selector {
+      display: flex; align-items: center; gap: 8px; margin-left: 18px;
+    }
+    .language-selector label {
+      font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;
+    }
+    .language-selector select {
+      border: 1px solid rgba(13,77,134,0.18); border-radius: 999px;
+      padding: 9px 14px; background: var(--white); color: var(--primary-dark);
+      font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(8,54,93,0.08);
+      outline: none;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+
+    .technology {
+      background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+    }
+    .technology-intro {
+      max-width: 850px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.9;
+      text-align: center;
+    }
+    .technology .card {
+      border-top: 4px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .technology .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(13,77,134,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .technology .card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    .technology .card p {
+      color: var(--muted);
+      line-height: 1.8;
+      text-align: left;
+    }
+
     @media (max-width: 992px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .hero-text-content { padding-left: 0; margin: 0 auto; }
@@ -121,6 +173,9 @@
     @media (max-width: 768px) {
       .container { padding: 0 25px; } /* Espace légèrement réduit sur petit mobile */
       .hamburger { display: flex; }
+      .nav-actions { gap: 8px; }
+      .language-selector { margin-left: 0; }
+      .language-selector label { display: none; }
       .nav-menu {
         position: absolute; top: 80px; left: 0; right: 0; background: white; flex-direction: column; padding: 30px; gap: 20px;
         transform: translateY(-150%); transition: 0.4s; opacity: 0;
@@ -149,62 +204,63 @@
         <div class="brand-mark">DR</div>
         <div class="brand-text">Dosi<span>rad.com</span></div>
       </a>
-      <nav>
-        <button class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-menu" id="navMenu">
-          <li><a class="nav-link" href="#accueil">Accueil</a></li>
-          <li><a class="nav-link" href="#solutions">Solutions</a></li>
-          <li><a class="nav-link" href="#technologie">Technologie</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="nav-actions">
+        <nav>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a class="nav-link" href="#accueil" data-i18n="nav_home">Home</a></li>
+            <li><a class="nav-link" href="#solutions" data-i18n="nav_solutions">Products</a></li>
+            <li><a class="nav-link" href="#technology" data-i18n="nav_technology">Technology</a></li>
+            <li><a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="language-selector">
+          <label for="languageSelect" data-i18n="language_label">Language</label>
+          <select id="languageSelect" aria-label="Choose language">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
     </div>
   </header>
 
   <section class="hero" id="accueil">
     <div class="container hero-grid">
       <div class="hero-text-content">
-        <div class="badge">Miniaturisation • Instantanéité • Connectivité Cloud • Capteurs Nano</div>
-        <h1>La dosimétrie active réinventée : Plus compacte, plus abordable, maniable et économique
-</h1>
+        <div class="badge"><span data-i18n="hero_badge">Miniaturization • Instantaneity • Cloud Connectivity • Nano Sensors</span></div>
+        <h1><span data-i18n="hero_title">Active dosimetry reinvented: more compact, more affordable, easier to handle and economical</span></h1>
         <p>
-          Dosirad développe des solutions intelligentes de détection active pour la dosimétrie mobile, le monitoring connecté et la cartographie automatisée, avec une vision centrée sur la miniaturisation et l’exploitation immédiate des données.
+          <span data-i18n="hero_text">Dosirad develops intelligent active detection solutions for mobile dosimetry, connected monitoring and automated mapping, with a vision focused on miniaturization and immediate data exploitation.</span>
         </p>
         <div class="hero-actions">
-          <a href="#solutions" class="btn btn-primary">Découvrir les solutions</a>
-          <a href="#contact" class="btn btn-secondary">Nous contacter</a>
+          <a href="#solutions" class="btn btn-primary"><span data-i18n="hero_btn_solutions">Discover solutions</span></a>
+          <a href="#contact" class="btn btn-secondary"><span data-i18n="hero_btn_contact">Contact us</span></a>
         </div>
       </div>
       <div class="hero-card">
-        <h3 style="margin-bottom:20px;">Écosystème Dosirad</h3>
+        <h3 style="margin-bottom:20px;"><span data-i18n="ecosystem_title">Dosirad ecosystem</span></h3>
         <ul>
-          <li>Capteurs actifs pour mesure instantanée</li>
-          <li>Dosimétrie sur smartphone via USB-C</li>
-          <li>Radiomètres IoT connectés</li>
-          <li>Robotique et cartographie</li>
+          <li><span data-i18n="ecosystem_1">Active sensors for instant measurement</span></li>
+          <li><span data-i18n="ecosystem_2">Smartphone dosimetry via USB-C</span></li>
+          <li><span data-i18n="ecosystem_3">Connected IoT radiometers</span></li>
+          <li><span data-i18n="ecosystem_4">Robotics and mapping</span></li>
         </ul>
       </div>
     </div>
   </section>
 
+
+  
+
   <section class="instrumentation" id="solutions">
     <div class="container">
       <div class="section-title">
-        <span class="eyebrow">Solutions</span>
-        <h2>Instrumentation moderne</h2>
-		<p class="solutions-description">
-         Des dispositifs miniaturisés et connectés pour transformer la lecture des rayonnements.<br>
-            — <strong>Dosimétrie "Plug & Play"</strong> : facilité de connexion USB-C.<br>
-            — <strong>Nano-capteurs actifs</strong> : taille ultra-réduite par rapport aux puces passives.<br>
-            — <strong>Dosimétrie 4.0</strong> : positionnée dans l'ère de la santé connectée.<br>
-            — <strong>Monitoring "Live-Dose"</strong> : un terme plus dynamique pour le temps réel.<br>
-            — <strong>Radioprotection connectée</strong> : lier la sécurité du personnel à l'aspect IoT.<br>
-            — <strong>Zéro-latence dosimétrique</strong> : lecture instantanée sans les délais des OSL/TLD.<br>
-            — <strong>Dosimétrie Nomade</strong> : le système s'utilise partout via smartphone.<br>
-            — <strong>Interface App-Centric</strong> : exploitation immédiate des données sur mobile.
-        </p>
+        <span class="eyebrow">Products</span>
+
       </div>
 
       <div class="cards-grid">
@@ -212,10 +268,10 @@
 		  <div>
 		    <img src="img/smartdose_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
 		  </div>
-          <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose – Dosimétrie intelligente en temps réel sur mobile</h3>
-          <p>Une technologie compacte et connectée qui révolutionne la mesure des rayonnements en intégrant performance, mobilité et intelligence directement dans votre smartphone.</p>
-		  <p>Solution portable de dosimétrie connectée offrant une lecture instantanée des rayonnements avec une précision clinique, idéale pour les professionnels de santé et de radioprotection.</p>
-		  <span class="tag"><a href="#accueil">Consulter</a></span>
+          <h3 style="color:var(--primary); margin-bottom:15px;"><span data-i18n="card1_title">SmartDose – Intelligent real-time mobile dosimetry</span></h3>
+          <p><span data-i18n="card1_p1">A compact and connected technology that revolutionizes radiation measurement by integrating performance, mobility and intelligence directly into your smartphone.</span></p>
+		  <p><span data-i18n="card1_p2">A portable connected dosimetry solution offering instant radiation reading with clinical-grade precision, ideal for healthcare and radiation protection professionals.</span></p>
+		  <span class="tag"><a href="#accueil"><span data-i18n="view_btn">View</span></a></span>
 		</article>
 		
 		<article class="card">
@@ -223,11 +279,9 @@
             <img src="img/smartdose_app.png" alt="SmartDose App - Interface Android" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
           </div>
            <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose App (Android)</h3>
-           <p> L'interface numérique indispensable pour transformer votre smartphone en un analyseur de rayonnement de haute précision. 
-                Elle centralise les flux de données provenant de vos capteurs pour une gestion proactive et intuitive de la dose.</p>
-           <p> Offre une visualisation instantanée (Live-Dose), des graphiques dynamiques pour identifier les pics d'exposition et une gestion intelligente des alertes. 
-		   L'outil permet également l'exportation simplifiée des rapports (PDF/CSV) et une synchronisation cloud pour une traçabilité totale.</p>
-           <span class="tag"><a href="#accueil">Consulter</a></span>
+           <p> <span data-i18n="card2_p1">The essential digital interface for turning your smartphone into a high-precision radiation analyzer. It centralizes data streams from your sensors for proactive and intuitive dose management.</span></p>
+           <p> <span data-i18n="card2_p2">Provides instant visualization (Live-Dose), dynamic graphs to identify exposure peaks and intelligent alert management. The tool also enables simplified report export (PDF/CSV) and cloud synchronization for full traceability.</span></p>
+           <span class="tag"><a href="#accueil"><span data-i18n="view_btn">View</span></a></span>
         </article>
 		
         <article class="card">
@@ -235,24 +289,19 @@
 		    <img src="img/sonde_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
 		  </div>
           <h3 style="color:var(--primary); margin-bottom:15px;">DoseStylus</h3>
-		  <p>Détecteur intelligent de nouvelle génération, conçu pour des mesures fines et localisées en environnement clinique. Connecté au smartphone, 
-		  il permet une visualisation en temps réel, un monitoring avancé et une exploitation précise des données dosimétriques, avec une ergonomie inspirée des sondes stylet de référence.
-		  </p>
-		  <p>Un détecteur intelligent, compact et connecté, offrant une précision de mesure exceptionnelle. Associé à une application mobile, il permet un affichage en temps réel, 
-		  un suivi continu et une analyse avancée des rayonnements, redéfinissant l’usage des sondes de type stylet en milieu clinique.</p>
-		  <span class="tag"><a href="#accueil">Consulter</a></span>
+		  <p><span data-i18n="card3_p1">A next-generation intelligent detector designed for fine and localized measurements in clinical environments. Connected to a smartphone, it enables real-time visualization, advanced monitoring and precise use of dosimetric data, with ergonomics inspired by reference stylus probes.</span></p>
+		  <p><span data-i18n="card3_p2">An intelligent, compact and connected detector offering outstanding measurement precision. Paired with a mobile app, it enables real-time display, continuous monitoring and advanced radiation analysis, redefining the use of stylus-type probes in clinical settings.</span></p>
+		  <span class="tag"><a href="#accueil"><span data-i18n="view_btn">View</span></a></span>
         </article>
 		
         <article class="card">
 		<div>
 		    <img src="img/iot_1.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
 		  </div>
-          <h3 style="color:var(--primary); margin-bottom:15px;">DoseGrid - Radiamètres IoT</h3>
-          <p>Réseau intelligent de radiomètres connectés permettant une surveillance en temps réel, 
-		  une acquisition distribuée et une cartographie automatisée des rayonnements, même dans les environnements les plus complexes.</p>
-		  <p> Système de monitoring sans fil basé sur un réseau de capteurs intelligents, offrant une visualisation en temps réel et 
-		  une cartographie dynamique des niveaux de rayonnement pour une gestion optimisée des environnements complexes.</p>
-		  <span class="tag"><a href="#accueil">Consulter</a></span>
+          <h3 style="color:var(--primary); margin-bottom:15px;"><span data-i18n="card4_title">DoseGrid - IoT Radiometers</span></h3>
+          <p><span data-i18n="card4_p1">An intelligent network of connected radiometers enabling real-time monitoring, distributed acquisition and automated radiation mapping, even in the most complex environments.</span></p>
+		  <p> <span data-i18n="card4_p2">A wireless monitoring system based on a network of intelligent sensors, offering real-time visualization and dynamic mapping of radiation levels for optimized management of complex environments.</span></p>
+		  <span class="tag"><a href="#accueil"><span data-i18n="view_btn">View</span></a></span>
         </article>
 		
 		<article class="card">
@@ -260,14 +309,55 @@
 		    <img src="img/NanoChip.png" alt="Fantôme Homogène - Tête pédiatrique" style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 15px; display: block;">
 		  </div>
           <h3 style="color:var(--primary); margin-bottom:15px;">SmartDose NanoChip</h3>
-		  (L'alternative active aux puces passives traditionnelles)
-          <p>Le SmartDose NanoChip représente la nouvelle frontière de la dosimétrie d'intervention et de recherche. Conçu pour offrir une alternative moderne et performante aux puces OSL (ou TLD) conventionnelles,
-		  ce dosimètre actif ultra-miniaturisé combine la taille d'un capteur passif avec l'intelligence d'un système numérique en temps réel.
-		  Grâce à son architecture ultra-compacte, il s'intègre parfaitement dans les fantômes de la gamme PhantoRad ou se fixe directement sur les équipements pour un monitoring précis sans encombrement.
-		  </p>
-		  <span class="tag"><a href="#accueil">Consulter</a></span>
+		  <span data-i18n="card5_subtitle">(The active alternative to traditional passive chips)</span>
+          <p><span data-i18n="card5_p1">The SmartDose NanoChip represents the new frontier of interventional and research dosimetry. Designed to offer a modern and high-performance alternative to conventional OSL (or TLD) chips, this ultra-miniaturized active dosimeter combines the size of a passive sensor with the intelligence of a real-time digital system. Thanks to its ultra-compact architecture, it fits perfectly into PhantoRad phantoms or can be attached directly to equipment for precise monitoring without clutter.</span></p>
+		  <span class="tag"><a href="#accueil"><span data-i18n="view_btn">View</span></a></span>
         </article>
 		
+      </div>
+    </div>
+  </section>
+
+<section class="technology" id="technology">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="technology_eyebrow">Technology</span>
+        <h2><span data-i18n="technology_title">Advanced Radiation Technologies</span></h2>
+        <p class="technology-intro" data-i18n="technology_intro">
+          Miniaturized and connected technologies designed to redefine radiation monitoring through real-time intelligence, mobility and next-generation nano-sensing.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3 data-i18n="tech_card1_title">Plug & Play Dosimetry</h3>
+          <p data-i18n="tech_card1_text">Instant USB-C connectivity for rapid deployment without complex installation procedures.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="tech_card2_title">Active Nano-Sensors</h3>
+          <p data-i18n="tech_card2_text">Ultra-miniaturized active sensing technology designed to outperform conventional passive chips.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="tech_card3_title">Live-Dose Monitoring</h3>
+          <p data-i18n="tech_card3_text">Real-time radiation visualization with intelligent dynamic monitoring and instant feedback.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="tech_card4_title">Connected Radiation Protection</h3>
+          <p data-i18n="tech_card4_text">Smart IoT-enabled monitoring ecosystem dedicated to personnel safety and environmental surveillance.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="tech_card5_title">Zero-Latency Dosimetry</h3>
+          <p data-i18n="tech_card5_text">Immediate radiation reading without the waiting limitations of OSL or TLD systems.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="tech_card6_title">App-Centric Interface</h3>
+          <p data-i18n="tech_card6_text">Mobile-first architecture enabling direct access, visualization and export of radiation data.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -284,11 +374,11 @@
 		  <p>omar.elrhazouani@uhp.ac.ma</p>
         </div>
 		<div class="contact-card">
-          <h3>Tél./Whatsapp:</h3>
+          <h3><span data-i18n="phone_label">Phone/WhatsApp:</span></h3>
           <p>+212601251462</p>
         </div>
         <div class="contact-card">
-          <h3>Partenaire</h3>
+          <h3><span data-i18n="partner_label">Partner</span></h3>
           <p><a href="https://phantorad.com/" target="_blank">Phantorad.com</a></p>
         </div>
       </div>
@@ -297,17 +387,124 @@
 
   <footer class="footer">
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-      <p>© 2026 Dosirad — Tous droits réservés.</p>
+      <p><span data-i18n="footer_rights">© 2026 Dosirad — All rights reserved.</span></p>
       <a href="https://www.dosirad.com/" target="_blank">Dosirad.com</a>
     </div>
   </footer>
 
+
   <script>
+    const translations = {
+      en: {
+        page_title: "Dosirad | Active Dosimetry of Ionizing Radiation",
+        meta_description: "Dosirad - Active detection solutions, real-time dosimetry, IoT and intelligent instrumentation.",
+        nav_home: "Home", nav_solutions: "Products", nav_technology: "Technology", nav_contact: "Contact", language_label: "Language",
+        hero_badge: "Miniaturization • Instantaneity • Cloud Connectivity • Nano Sensors",
+        hero_title: "Active dosimetry reinvented: more compact, more affordable, easier to handle and economical",
+        hero_text: "Dosirad develops intelligent active detection solutions for mobile dosimetry, connected monitoring and automated mapping, with a vision focused on miniaturization and immediate data exploitation.",
+        hero_btn_solutions: "Discover solutions", hero_btn_contact: "Contact us",
+        ecosystem_title: "Dosirad ecosystem", ecosystem_1: "Active sensors for instant measurement", ecosystem_2: "Smartphone dosimetry via USB-C", ecosystem_3: "Connected IoT radiometers", ecosystem_4: "Robotics and mapping",
+        solutions_title: "Modern instrumentation", solutions_intro: "Miniaturized and connected devices to transform radiation reading.",
+        solutions_1_label: 'Plug & Play Dosimetry', solutions_1_text: 'easy USB-C connection.',
+        solutions_2_label: 'Active nano-sensors', solutions_2_text: 'ultra-small size compared with passive chips.',
+        solutions_3_label: 'Dosimetry 4.0', solutions_3_text: 'positioned in the era of connected health.',
+        solutions_4_label: 'Live-Dose Monitoring', solutions_4_text: 'a more dynamic term for real time.',
+        solutions_5_label: 'Connected radiation protection', solutions_5_text: 'linking staff safety to the IoT dimension.',
+        solutions_6_label: 'Zero-latency dosimetry', solutions_6_text: 'instant reading without OSL/TLD delays.',
+        solutions_7_label: 'Mobile Dosimetry', solutions_7_text: 'the system can be used anywhere via smartphone.',
+        solutions_8_label: 'App-Centric Interface', solutions_8_text: 'immediate data exploitation on mobile.',
+        technology_eyebrow: 'Technology', technology_title: 'Advanced Radiation Technologies', technology_intro: 'Miniaturized and connected technologies designed to redefine radiation monitoring through real-time intelligence, mobility and next-generation nano-sensing.', tech_card1_title: 'Plug & Play Dosimetry', tech_card1_text: 'Instant USB-C connectivity for rapid deployment without complex installation procedures.', tech_card2_title: 'Active Nano-Sensors', tech_card2_text: 'Ultra-miniaturized active sensing technology designed to outperform conventional passive chips.', tech_card3_title: 'Live-Dose Monitoring', tech_card3_text: 'Real-time radiation visualization with intelligent dynamic monitoring and instant feedback.', tech_card4_title: 'Connected Radiation Protection', tech_card4_text: 'Smart IoT-enabled monitoring ecosystem dedicated to personnel safety and environmental surveillance.', tech_card5_title: 'Zero-Latency Dosimetry', tech_card5_text: 'Immediate radiation reading without the waiting limitations of OSL or TLD systems.', tech_card6_title: 'App-Centric Interface', tech_card6_text: 'Mobile-first architecture enabling direct access, visualization and export of radiation data.',
+        card1_title: "SmartDose – Intelligent real-time mobile dosimetry", card1_p1: "A compact and connected technology that revolutionizes radiation measurement by integrating performance, mobility and intelligence directly into your smartphone.", card1_p2: "A portable connected dosimetry solution offering instant radiation reading with clinical-grade precision, ideal for healthcare and radiation protection professionals.",
+        card2_p1: "The essential digital interface for turning your smartphone into a high-precision radiation analyzer. It centralizes data streams from your sensors for proactive and intuitive dose management.", card2_p2: "Provides instant visualization (Live-Dose), dynamic graphs to identify exposure peaks and intelligent alert management. The tool also enables simplified report export (PDF/CSV) and cloud synchronization for full traceability.",
+        card3_p1: "A next-generation intelligent detector designed for fine and localized measurements in clinical environments. Connected to a smartphone, it enables real-time visualization, advanced monitoring and precise use of dosimetric data, with ergonomics inspired by reference stylus probes.", card3_p2: "An intelligent, compact and connected detector offering outstanding measurement precision. Paired with a mobile app, it enables real-time display, continuous monitoring and advanced radiation analysis, redefining the use of stylus-type probes in clinical settings.",
+        card4_title: "DoseGrid - IoT Radiometers", card4_p1: "An intelligent network of connected radiometers enabling real-time monitoring, distributed acquisition and automated radiation mapping, even in the most complex environments.", card4_p2: "A wireless monitoring system based on a network of intelligent sensors, offering real-time visualization and dynamic mapping of radiation levels for optimized management of complex environments.",
+        card5_subtitle: "(The active alternative to traditional passive chips)", card5_p1: "The SmartDose NanoChip represents the new frontier of interventional and research dosimetry. Designed to offer a modern and high-performance alternative to conventional OSL (or TLD) chips, this ultra-miniaturized active dosimeter combines the size of a passive sensor with the intelligence of a real-time digital system. Thanks to its ultra-compact architecture, it fits perfectly into PhantoRad phantoms or can be attached directly to equipment for precise monitoring without clutter.",
+        view_btn: "View", phone_label: "Phone/WhatsApp:", partner_label: "Partner", footer_rights: "© 2026 Dosirad — All rights reserved."
+      },
+      fr: {
+        page_title: "Dosirad | Dosimétrie Active des Rayonnements Ionisants",
+        meta_description: "Dosirad - Solutions de détection active, dosimétrie en temps réel, IoT et instrumentation intelligente.",
+        nav_home: "Accueil", nav_solutions: "Produits", nav_technology: "Technologie", nav_contact: "Contact", language_label: "Langue",
+        hero_badge: "Miniaturisation • Instantanéité • Connectivité Cloud • Capteurs Nano",
+        hero_title: "La dosimétrie active réinventée : plus compacte, plus abordable, maniable et économique",
+        hero_text: "Dosirad développe des solutions intelligentes de détection active pour la dosimétrie mobile, le monitoring connecté et la cartographie automatisée, avec une vision centrée sur la miniaturisation et l’exploitation immédiate des données.",
+        hero_btn_solutions: "Découvrir les solutions", hero_btn_contact: "Nous contacter",
+        ecosystem_title: "Écosystème Dosirad", ecosystem_1: "Capteurs actifs pour mesure instantanée", ecosystem_2: "Dosimétrie sur smartphone via USB-C", ecosystem_3: "Radiomètres IoT connectés", ecosystem_4: "Robotique et cartographie",
+        solutions_title: "Instrumentation moderne", solutions_intro: "Des dispositifs miniaturisés et connectés pour transformer la lecture des rayonnements.",
+        solutions_1_label: 'Dosimétrie "Plug & Play"', solutions_1_text: 'facilité de connexion USB-C.',
+        solutions_2_label: 'Nano-capteurs actifs', solutions_2_text: 'taille ultra-réduite par rapport aux puces passives.',
+        solutions_3_label: 'Dosimétrie 4.0', solutions_3_text: "positionnée dans l'ère de la santé connectée.",
+        solutions_4_label: 'Monitoring "Live-Dose"', solutions_4_text: 'un terme plus dynamique pour le temps réel.',
+        solutions_5_label: 'Radioprotection connectée', solutions_5_text: "lier la sécurité du personnel à l'aspect IoT.",
+        solutions_6_label: 'Zéro-latence dosimétrique', solutions_6_text: 'lecture instantanée sans les délais des OSL/TLD.',
+        solutions_7_label: 'Dosimétrie Nomade', solutions_7_text: "le système s'utilise partout via smartphone.",
+        solutions_8_label: 'Interface App-Centric', solutions_8_text: 'exploitation immédiate des données sur mobile.',
+        technology_eyebrow: 'Technologie', technology_title: 'Technologies avancées de détection des rayonnements', technology_intro: 'Des technologies miniaturisées et connectées conçues pour redéfinir le monitoring des rayonnements grâce à l’intelligence temps réel, la mobilité et les nano-capteurs de nouvelle génération.', tech_card1_title: 'Dosimétrie Plug & Play', tech_card1_text: 'Connectivité USB-C instantanée pour un déploiement rapide sans procédure d’installation complexe.', tech_card2_title: 'Nano-capteurs actifs', tech_card2_text: 'Technologie de détection active ultra-miniaturisée conçue pour dépasser les limites des puces passives conventionnelles.', tech_card3_title: 'Monitoring Live-Dose', tech_card3_text: 'Visualisation des rayonnements en temps réel avec suivi dynamique intelligent et retour immédiat.', tech_card4_title: 'Radioprotection connectée', tech_card4_text: 'Écosystème de monitoring intelligent basé sur l’IoT, dédié à la sécurité du personnel et à la surveillance environnementale.', tech_card5_title: 'Dosimétrie zéro-latence', tech_card5_text: 'Lecture immédiate des rayonnements sans les délais d’attente des systèmes OSL ou TLD.', tech_card6_title: 'Interface App-Centric', tech_card6_text: 'Architecture mobile-first permettant l’accès direct, la visualisation et l’exportation des données dosimétriques.',
+        card1_title: "SmartDose – Dosimétrie intelligente en temps réel sur mobile", card1_p1: "Une technologie compacte et connectée qui révolutionne la mesure des rayonnements en intégrant performance, mobilité et intelligence directement dans votre smartphone.", card1_p2: "Solution portable de dosimétrie connectée offrant une lecture instantanée des rayonnements avec une précision clinique, idéale pour les professionnels de santé et de radioprotection.",
+        card2_p1: "L'interface numérique indispensable pour transformer votre smartphone en un analyseur de rayonnement de haute précision. Elle centralise les flux de données provenant de vos capteurs pour une gestion proactive et intuitive de la dose.", card2_p2: "Offre une visualisation instantanée (Live-Dose), des graphiques dynamiques pour identifier les pics d'exposition et une gestion intelligente des alertes. L'outil permet également l'exportation simplifiée des rapports (PDF/CSV) et une synchronisation cloud pour une traçabilité totale.",
+        card3_p1: "Détecteur intelligent de nouvelle génération, conçu pour des mesures fines et localisées en environnement clinique. Connecté au smartphone, il permet une visualisation en temps réel, un monitoring avancé et une exploitation précise des données dosimétriques, avec une ergonomie inspirée des sondes stylet de référence.", card3_p2: "Un détecteur intelligent, compact et connecté, offrant une précision de mesure exceptionnelle. Associé à une application mobile, il permet un affichage en temps réel, un suivi continu et une analyse avancée des rayonnements, redéfinissant l’usage des sondes de type stylet en milieu clinique.",
+        card4_title: "DoseGrid - Radiamètres IoT", card4_p1: "Réseau intelligent de radiomètres connectés permettant une surveillance en temps réel, une acquisition distribuée et une cartographie automatisée des rayonnements, même dans les environnements les plus complexes.", card4_p2: "Système de monitoring sans fil basé sur un réseau de capteurs intelligents, offrant une visualisation en temps réel et une cartographie dynamique des niveaux de rayonnement pour une gestion optimisée des environnements complexes.",
+        card5_subtitle: "(L'alternative active aux puces passives traditionnelles)", card5_p1: "Le SmartDose NanoChip représente la nouvelle frontière de la dosimétrie d'intervention et de recherche. Conçu pour offrir une alternative moderne et performante aux puces OSL (ou TLD) conventionnelles, ce dosimètre actif ultra-miniaturisé combine la taille d'un capteur passif avec l'intelligence d'un système numérique en temps réel. Grâce à son architecture ultra-compacte, il s'intègre parfaitement dans les fantômes de la gamme PhantoRad ou se fixe directement sur les équipements pour un monitoring précis sans encombrement.",
+        view_btn: "Consulter", phone_label: "Tél./WhatsApp:", partner_label: "Partenaire", footer_rights: "© 2026 Dosirad — Tous droits réservés."
+      },
+      es: {
+        page_title: "Dosirad | Dosimetría activa de radiaciones ionizantes",
+        meta_description: "Dosirad - Soluciones de detección activa, dosimetría en tiempo real, IoT e instrumentación inteligente.",
+        nav_home: "Inicio", nav_solutions: "Productos", nav_technology: "Tecnología", nav_contact: "Contacto", language_label: "Idioma",
+        hero_badge: "Miniaturización • Instantaneidad • Conectividad Cloud • Nano sensores",
+        hero_title: "Dosimetría activa reinventada: más compacta, más asequible, manejable y económica",
+        hero_text: "Dosirad desarrolla soluciones inteligentes de detección activa para dosimetría móvil, monitorización conectada y cartografía automatizada, con una visión centrada en la miniaturización y el uso inmediato de los datos.",
+        hero_btn_solutions: "Descubrir soluciones", hero_btn_contact: "Contáctenos",
+        ecosystem_title: "Ecosistema Dosirad", ecosystem_1: "Sensores activos para medición instantánea", ecosystem_2: "Dosimetría en smartphone vía USB-C", ecosystem_3: "Radiómetros IoT conectados", ecosystem_4: "Robótica y cartografía",
+        solutions_title: "Instrumentación moderna", solutions_intro: "Dispositivos miniaturizados y conectados para transformar la lectura de radiación.",
+        solutions_1_label: 'Dosimetría Plug & Play', solutions_1_text: 'conexión USB-C sencilla.',
+        solutions_2_label: 'Nano sensores activos', solutions_2_text: 'tamaño ultrarreducido frente a los chips pasivos.',
+        solutions_3_label: 'Dosimetría 4.0', solutions_3_text: 'posicionada en la era de la salud conectada.',
+        solutions_4_label: 'Monitorización Live-Dose', solutions_4_text: 'un término más dinámico para el tiempo real.',
+        solutions_5_label: 'Radioprotección conectada', solutions_5_text: 'vincula la seguridad del personal con la dimensión IoT.',
+        solutions_6_label: 'Dosimetría de latencia cero', solutions_6_text: 'lectura instantánea sin los retrasos de OSL/TLD.',
+        solutions_7_label: 'Dosimetría nómada', solutions_7_text: 'el sistema puede utilizarse en cualquier lugar mediante smartphone.',
+        solutions_8_label: 'Interfaz centrada en la app', solutions_8_text: 'explotación inmediata de los datos en el móvil.',
+        technology_eyebrow: 'Tecnología', technology_title: 'Tecnologías avanzadas de detección de radiación', technology_intro: 'Tecnologías miniaturizadas y conectadas diseñadas para redefinir la monitorización de la radiación mediante inteligencia en tiempo real, movilidad y nano-sensores de nueva generación.', tech_card1_title: 'Dosimetría Plug & Play', tech_card1_text: 'Conectividad USB-C instantánea para un despliegue rápido sin procedimientos de instalación complejos.', tech_card2_title: 'Nano-sensores activos', tech_card2_text: 'Tecnología de detección activa ultraminiaturizada diseñada para superar los chips pasivos convencionales.', tech_card3_title: 'Monitorización Live-Dose', tech_card3_text: 'Visualización de la radiación en tiempo real con monitorización dinámica inteligente y respuesta inmediata.', tech_card4_title: 'Radioprotección conectada', tech_card4_text: 'Ecosistema inteligente de monitorización basado en IoT, dedicado a la seguridad del personal y a la vigilancia ambiental.', tech_card5_title: 'Dosimetría de latencia cero', tech_card5_text: 'Lectura inmediata de la radiación sin las limitaciones de espera de los sistemas OSL o TLD.', tech_card6_title: 'Interfaz centrada en la app', tech_card6_text: 'Arquitectura mobile-first que permite acceso directo, visualización y exportación de datos dosimétricos.',
+        card1_title: "SmartDose – Dosimetría móvil inteligente en tiempo real", card1_p1: "Una tecnología compacta y conectada que revoluciona la medición de radiación integrando rendimiento, movilidad e inteligencia directamente en su smartphone.", card1_p2: "Solución portátil de dosimetría conectada que ofrece lectura instantánea de radiación con precisión clínica, ideal para profesionales sanitarios y de radioprotección.",
+        card2_p1: "La interfaz digital indispensable para transformar su smartphone en un analizador de radiación de alta precisión. Centraliza los flujos de datos procedentes de sus sensores para una gestión proactiva e intuitiva de la dosis.", card2_p2: "Ofrece visualización instantánea (Live-Dose), gráficos dinámicos para identificar picos de exposición y gestión inteligente de alertas. La herramienta también permite exportar informes fácilmente (PDF/CSV) y sincronización cloud para una trazabilidad completa.",
+        card3_p1: "Detector inteligente de nueva generación, diseñado para mediciones finas y localizadas en entornos clínicos. Conectado al smartphone, permite visualización en tiempo real, monitorización avanzada y explotación precisa de los datos dosimétricos, con ergonomía inspirada en sondas tipo lápiz de referencia.", card3_p2: "Un detector inteligente, compacto y conectado, que ofrece una precisión de medición excepcional. Asociado a una aplicación móvil, permite visualización en tiempo real, seguimiento continuo y análisis avanzado de la radiación, redefiniendo el uso de sondas tipo lápiz en el ámbito clínico.",
+        card4_title: "DoseGrid - Radiómetros IoT", card4_p1: "Red inteligente de radiómetros conectados que permite monitorización en tiempo real, adquisición distribuida y cartografía automatizada de la radiación, incluso en los entornos más complejos.", card4_p2: "Sistema de monitorización inalámbrica basado en una red de sensores inteligentes, que ofrece visualización en tiempo real y cartografía dinámica de los niveles de radiación para una gestión optimizada de entornos complejos.",
+        card5_subtitle: "(La alternativa activa a los chips pasivos tradicionales)", card5_p1: "SmartDose NanoChip representa la nueva frontera de la dosimetría de intervención e investigación. Diseñado para ofrecer una alternativa moderna y eficaz a los chips OSL (o TLD) convencionales, este dosímetro activo ultraminiaturizado combina el tamaño de un sensor pasivo con la inteligencia de un sistema digital en tiempo real. Gracias a su arquitectura ultracompacta, se integra perfectamente en los fantomas de la gama PhantoRad o se fija directamente a los equipos para una monitorización precisa sin ocupar espacio.",
+        view_btn: "Ver", phone_label: "Tel./WhatsApp:", partner_label: "Socio", footer_rights: "© 2026 Dosirad — Todos los derechos reservados."
+      }
+    };
+
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
+    const languageSelect = document.getElementById('languageSelect');
+
+    function applyLanguage(lang) {
+      const selected = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.title = selected.page_title;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', selected.meta_description);
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (selected[key]) element.textContent = selected[key];
+      });
+
+      localStorage.setItem('dosirad_language', lang);
+    }
+
     hamburger.addEventListener('click', () => {
       navMenu.classList.toggle('active');
     });
+
+    languageSelect.addEventListener('change', (event) => {
+      applyLanguage(event.target.value);
+    });
+
+    const savedLanguage = localStorage.getItem('dosirad_language') || 'en';
+    languageSelect.value = savedLanguage;
+    applyLanguage(savedLanguage);
   </script>
 </body>
 </html>
