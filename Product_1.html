@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dosirad | Active Dosimetry of Ionizing Radiation</title>
+  <meta name="description" content="Dosirad - Active detection solutions, real-time dosimetry, IoT and intelligent instrumentation." />
+  <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+  <style>
+    :root {
+      --primary: #0d4d86;
+      --primary-dark: #08365d;
+      --primary-soft: #eef6fd;
+      --secondary: #6f7f8f;
+      --white: #ffffff;
+      --text: #1d2a37;
+      --muted: #5e6d7c;
+      --accent: #dbeeff;
+      --shadow: 0 14px 40px rgba(8, 54, 93, 0.12);
+      --shadow-hover: 0 20px 50px rgba(8, 54, 93, 0.18);
+      --radius: 22px;
+      --transition: all 0.35s ease;
+      --max-width: 1240px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Roboto, "Open Sans", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+      line-height: 1.65;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* MODIFICATION : Augmentation du décalage latéral global */
+    .container { 
+      max-width: var(--max-width); 
+      margin: 0 auto; 
+      padding: 0 50px; /* Espace de sécurité entre le texte et le bord de la page */
+    }
+
+    .header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(13,77,134,0.08);
+    }
+    .navbar {
+      min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; font-weight: 800; color: var(--primary-dark); }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary), #59a1d8); color: var(--white); box-shadow: var(--shadow);
+    }
+    .brand-text { font-size: 1.3rem; }
+    .brand-text span { color: var(--secondary); }
+    .nav-menu { display: flex; gap: 28px; list-style: none; }
+    .nav-link { position: relative; font-weight: 600; transition: var(--transition); }
+    .nav-link:hover { color: var(--primary); }
+
+    .hamburger { display: none; width: 42px; height: 42px; background: transparent; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
+    .hamburger span { height: 3px; width: 100%; border-radius: 10px; background: var(--primary); transition: var(--transition); }
+
+    .hero {
+      min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; color: var(--white);
+      background:
+        linear-gradient(rgba(8,54,93,0.8), rgba(13,77,134,0.75)),
+        url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-grid {
+      position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; width: 100%; padding: 80px 0;
+    }
+
+    /* MODIFICATION : Décalage spécifique du texte de la bannière */
+    .hero-text-content {
+      padding-left: 10px; /* Petit décalage supplémentaire pour l'esthétique */
+      max-width: 720px;
+    }
+
+    .badge {
+      display: inline-block; margin-bottom: 22px; padding: 9px 18px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); font-size: 0.9rem;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.1; margin-bottom: 22px; font-weight: 800; }
+    .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.94); margin-bottom: 35px; text-align: justify; }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; padding: 15px 32px; border-radius: 999px; font-weight: 700; transition: var(--transition); border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--white); color: var(--primary-dark); }
+    .btn-secondary { background: var(--primary); color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+    .btn:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(12px); border-radius: 28px; padding: 30px;
+    }
+    .hero-card li { padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.08); margin-bottom: 10px; list-style: none; font-size: 0.95rem; }
+
+    section { padding: 100px 0; }
+    .section-title { text-align: center; max-width: 850px; margin: 0 auto 60px; }
+    .eyebrow { display: inline-block; padding: 8px 18px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-weight: 700; margin-bottom: 15px; }
+    .section-title h2 { font-size: 2.8rem; color: var(--primary-dark); margin-bottom: 15px; }
+
+    .cards-grid, .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .card, .contact-card {
+      background: var(--white); padding: 35px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(13,77,134,0.05); transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); }
+	.card p { text-align: justify; hyphens: auto; }
+	.tag { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #f1f5f8; color: var(--steel); font-size: 0.9rem; font-weight: 600; }
+
+    .footer { background: #0a1f34; color: rgba(255,255,255,0.8); padding: 40px 0; }
+
+    .language-selector {
+      display: flex; align-items: center; gap: 8px; margin-left: 18px;
+    }
+    .language-selector label {
+      font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;
+    }
+    .language-selector select {
+      border: 1px solid rgba(13,77,134,0.18); border-radius: 999px;
+      padding: 9px 14px; background: var(--white); color: var(--primary-dark);
+      font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(8,54,93,0.08);
+      outline: none;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+
+    .technology {
+      background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+    }
+    .technology-intro {
+      max-width: 850px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.9;
+      text-align: center;
+    }
+    .technology .card {
+      border-top: 4px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .technology .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(13,77,134,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .technology .card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    .technology .card p {
+      color: var(--muted);
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-text-content { padding-left: 0; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      .hero p { text-align: center; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 25px; } /* Espace légèrement réduit sur petit mobile */
+      .hamburger { display: flex; }
+      .nav-actions { gap: 8px; }
+      .language-selector { margin-left: 0; }
+      .language-selector label { display: none; }
+      .nav-menu {
+        position: absolute; top: 80px; left: 0; right: 0; background: white; flex-direction: column; padding: 30px; gap: 20px;
+        transform: translateY(-150%); transition: 0.4s; opacity: 0;
+      }
+      .nav-menu.active { transform: translateY(0); opacity: 1; }
+    }
+	.solutions-description {
+    line-height: 1.8; /* Augmente l'espacement entre les lignes pour la lisibilité */
+    color: #444;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Aligné à gauche pour faciliter la lecture des tirets */
+    font-size: 1.05rem;
+    }
+
+    .solutions-description strong {
+    color: #007bff; /* Utilise le bleu de votre logo pour souligner les mots-clés */
+    font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">DR</div>
+        <div class="brand-text">Dosi<span>rad.com</span></div>
+      </a>
+      <div class="nav-actions">
+        <nav>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a class="nav-link" href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="language-selector">
+          <label for="languageSelect" data-i18n="language_label">Language</label>
+          <select id="languageSelect" aria-label="Choose language">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="accueil">
+
+    <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+
+        <div style="width:90%; margin-bottom:30px;">
+            <img src="img/product_1_version_1.png"
+                 style="width:100%; display:block;">
+        </div>
+
+        <div style="width:90%; margin-bottom:30px;">
+            <img src="img/product_1_version_2.png"
+                 style="width:100%; display:block;">
+        </div>
+
+        <div style="width:90%;">
+            <img src="img/product_1_version_3.png"
+                 style="width:100%; display:block;">
+        </div>
+
+    </div>
+
+</section>
+
+  <section id="contact" style="background:#f9fbfd;">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Contact</span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p>doc.omarel@gmail.com</p>
+		  <p>omar.elrhazouani@uhp.ac.ma</p>
+        </div>
+		<div class="contact-card">
+          <h3><span data-i18n="phone_label">Phone/WhatsApp:</span></h3>
+          <p>+212601251462</p>
+        </div>
+        <div class="contact-card">
+          <h3><span data-i18n="partner_label">Partner</span></h3>
+          <p><a href="https://phantorad.com/" target="_blank">Phantorad.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <p><span data-i18n="footer_rights">© 2026 Dosirad — All rights reserved.</span></p>
+      <a href="https://www.dosirad.com/" target="_blank">Dosirad.com</a>
+    </div>
+  </footer>
+
+
+  <script>
+    const translations = {
+      en: {
+        page_title: "Dosirad | Active Dosimetry of Ionizing Radiation",
+        meta_description: "Dosirad - Active detection solutions, real-time dosimetry, IoT and intelligent instrumentation.",
+        nav_home: "Home", nav_solutions: "Products", nav_technology: "Technology", nav_contact: "Contact", language_label: "Language",
+        hero_badge: "Miniaturization • Instantaneity • Cloud Connectivity • Nano Sensors",
+        hero_title: "Active dosimetry reinvented: more compact, more affordable, easier to handle and economical",
+        hero_text: "Dosirad develops intelligent active detection solutions for mobile dosimetry, connected monitoring and automated mapping, with a vision focused on miniaturization and immediate data exploitation.",
+        hero_btn_solutions: "Discover solutions", hero_btn_contact: "Contact us",
+        ecosystem_title: "Dosirad ecosystem", ecosystem_1: "Active sensors for instant measurement", ecosystem_2: "Smartphone dosimetry via USB-C", ecosystem_3: "Connected IoT radiometers", ecosystem_4: "Robotics and mapping",
+        solutions_title: "Modern instrumentation", solutions_intro: "Miniaturized and connected devices to transform radiation reading.",
+        solutions_1_label: 'Plug & Play Dosimetry', solutions_1_text: 'easy USB-C connection.',
+        solutions_2_label: 'Active nano-sensors', solutions_2_text: 'ultra-small size compared with passive chips.',
+        solutions_3_label: 'Dosimetry 4.0', solutions_3_text: 'positioned in the era of connected health.',
+        solutions_4_label: 'Live-Dose Monitoring', solutions_4_text: 'a more dynamic term for real time.',
+        solutions_5_label: 'Connected radiation protection', solutions_5_text: 'linking staff safety to the IoT dimension.',
+        solutions_6_label: 'Zero-latency dosimetry', solutions_6_text: 'instant reading without OSL/TLD delays.',
+        solutions_7_label: 'Mobile Dosimetry', solutions_7_text: 'the system can be used anywhere via smartphone.',
+        solutions_8_label: 'App-Centric Interface', solutions_8_text: 'immediate data exploitation on mobile.',
+        technology_eyebrow: 'Technology', technology_title: 'Advanced Radiation Technologies', technology_intro: 'Miniaturized and connected technologies designed to redefine radiation monitoring through real-time intelligence, mobility and next-generation nano-sensing.', tech_card1_title: 'Plug & Play Dosimetry', tech_card1_text: 'Instant USB-C connectivity for rapid deployment without complex installation procedures.', tech_card2_title: 'Active Nano-Sensors', tech_card2_text: 'Ultra-miniaturized active sensing technology designed to outperform conventional passive chips.', tech_card3_title: 'Live-Dose Monitoring', tech_card3_text: 'Real-time radiation visualization with intelligent dynamic monitoring and instant feedback.', tech_card4_title: 'Connected Radiation Protection', tech_card4_text: 'Smart IoT-enabled monitoring ecosystem dedicated to personnel safety and environmental surveillance.', tech_card5_title: 'Zero-Latency Dosimetry', tech_card5_text: 'Immediate radiation reading without the waiting limitations of OSL or TLD systems.', tech_card6_title: 'App-Centric Interface', tech_card6_text: 'Mobile-first architecture enabling direct access, visualization and export of radiation data.',
+        card1_title: "SmartDose – Intelligent real-time mobile dosimetry", card1_p1: "A compact and connected technology that revolutionizes radiation measurement by integrating performance, mobility and intelligence directly into your smartphone.", card1_p2: "A portable connected dosimetry solution offering instant radiation reading with clinical-grade precision, ideal for healthcare and radiation protection professionals.",
+        card2_p1: "The essential digital interface for turning your smartphone into a high-precision radiation analyzer. It centralizes data streams from your sensors for proactive and intuitive dose management.", card2_p2: "Provides instant visualization (Live-Dose), dynamic graphs to identify exposure peaks and intelligent alert management. The tool also enables simplified report export (PDF/CSV) and cloud synchronization for full traceability.",
+        card3_p1: "A next-generation intelligent detector designed for fine and localized measurements in clinical environments. Connected to a smartphone, it enables real-time visualization, advanced monitoring and precise use of dosimetric data, with ergonomics inspired by reference stylus probes.", card3_p2: "An intelligent, compact and connected detector offering outstanding measurement precision. Paired with a mobile app, it enables real-time display, continuous monitoring and advanced radiation analysis, redefining the use of stylus-type probes in clinical settings.",
+        card4_title: "DoseGrid - IoT Radiometers", card4_p1: "An intelligent network of connected radiometers enabling real-time monitoring, distributed acquisition and automated radiation mapping, even in the most complex environments.", card4_p2: "A wireless monitoring system based on a network of intelligent sensors, offering real-time visualization and dynamic mapping of radiation levels for optimized management of complex environments.",
+        card5_subtitle: "(The active alternative to traditional passive chips)", card5_p1: "The SmartDose NanoChip represents the new frontier of interventional and research dosimetry. Designed to offer a modern and high-performance alternative to conventional OSL (or TLD) chips, this ultra-miniaturized active dosimeter combines the size of a passive sensor with the intelligence of a real-time digital system. Thanks to its ultra-compact architecture, it fits perfectly into PhantoRad phantoms or can be attached directly to equipment for precise monitoring without clutter.",
+        view_btn: "View", phone_label: "Phone/WhatsApp:", partner_label: "Partner", footer_rights: "© 2026 Dosirad — All rights reserved."
+      },
+      fr: {
+        page_title: "Dosirad | Dosimétrie Active des Rayonnements Ionisants",
+        meta_description: "Dosirad - Solutions de détection active, dosimétrie en temps réel, IoT et instrumentation intelligente.",
+        nav_home: "Accueil", nav_solutions: "Produits", nav_technology: "Technologie", nav_contact: "Contact", language_label: "Langue",
+        hero_badge: "Miniaturisation • Instantanéité • Connectivité Cloud • Capteurs Nano",
+        hero_title: "La dosimétrie active réinventée : plus compacte, plus abordable, maniable et économique",
+        hero_text: "Dosirad développe des solutions intelligentes de détection active pour la dosimétrie mobile, le monitoring connecté et la cartographie automatisée, avec une vision centrée sur la miniaturisation et l’exploitation immédiate des données.",
+        hero_btn_solutions: "Découvrir les solutions", hero_btn_contact: "Nous contacter",
+        ecosystem_title: "Écosystème Dosirad", ecosystem_1: "Capteurs actifs pour mesure instantanée", ecosystem_2: "Dosimétrie sur smartphone via USB-C", ecosystem_3: "Radiomètres IoT connectés", ecosystem_4: "Robotique et cartographie",
+        solutions_title: "Instrumentation moderne", solutions_intro: "Des dispositifs miniaturisés et connectés pour transformer la lecture des rayonnements.",
+        solutions_1_label: 'Dosimétrie "Plug & Play"', solutions_1_text: 'facilité de connexion USB-C.',
+        solutions_2_label: 'Nano-capteurs actifs', solutions_2_text: 'taille ultra-réduite par rapport aux puces passives.',
+        solutions_3_label: 'Dosimétrie 4.0', solutions_3_text: "positionnée dans l'ère de la santé connectée.",
+        solutions_4_label: 'Monitoring "Live-Dose"', solutions_4_text: 'un terme plus dynamique pour le temps réel.',
+        solutions_5_label: 'Radioprotection connectée', solutions_5_text: "lier la sécurité du personnel à l'aspect IoT.",
+        solutions_6_label: 'Zéro-latence dosimétrique', solutions_6_text: 'lecture instantanée sans les délais des OSL/TLD.',
+        solutions_7_label: 'Dosimétrie Nomade', solutions_7_text: "le système s'utilise partout via smartphone.",
+        solutions_8_label: 'Interface App-Centric', solutions_8_text: 'exploitation immédiate des données sur mobile.',
+        technology_eyebrow: 'Technologie', technology_title: 'Technologies avancées de détection des rayonnements', technology_intro: 'Des technologies miniaturisées et connectées conçues pour redéfinir le monitoring des rayonnements grâce à l’intelligence temps réel, la mobilité et les nano-capteurs de nouvelle génération.', tech_card1_title: 'Dosimétrie Plug & Play', tech_card1_text: 'Connectivité USB-C instantanée pour un déploiement rapide sans procédure d’installation complexe.', tech_card2_title: 'Nano-capteurs actifs', tech_card2_text: 'Technologie de détection active ultra-miniaturisée conçue pour dépasser les limites des puces passives conventionnelles.', tech_card3_title: 'Monitoring Live-Dose', tech_card3_text: 'Visualisation des rayonnements en temps réel avec suivi dynamique intelligent et retour immédiat.', tech_card4_title: 'Radioprotection connectée', tech_card4_text: 'Écosystème de monitoring intelligent basé sur l’IoT, dédié à la sécurité du personnel et à la surveillance environnementale.', tech_card5_title: 'Dosimétrie zéro-latence', tech_card5_text: 'Lecture immédiate des rayonnements sans les délais d’attente des systèmes OSL ou TLD.', tech_card6_title: 'Interface App-Centric', tech_card6_text: 'Architecture mobile-first permettant l’accès direct, la visualisation et l’exportation des données dosimétriques.',
+        card1_title: "SmartDose – Dosimétrie intelligente en temps réel sur mobile", card1_p1: "Une technologie compacte et connectée qui révolutionne la mesure des rayonnements en intégrant performance, mobilité et intelligence directement dans votre smartphone.", card1_p2: "Solution portable de dosimétrie connectée offrant une lecture instantanée des rayonnements avec une précision clinique, idéale pour les professionnels de santé et de radioprotection.",
+        card2_p1: "L'interface numérique indispensable pour transformer votre smartphone en un analyseur de rayonnement de haute précision. Elle centralise les flux de données provenant de vos capteurs pour une gestion proactive et intuitive de la dose.", card2_p2: "Offre une visualisation instantanée (Live-Dose), des graphiques dynamiques pour identifier les pics d'exposition et une gestion intelligente des alertes. L'outil permet également l'exportation simplifiée des rapports (PDF/CSV) et une synchronisation cloud pour une traçabilité totale.",
+        card3_p1: "Détecteur intelligent de nouvelle génération, conçu pour des mesures fines et localisées en environnement clinique. Connecté au smartphone, il permet une visualisation en temps réel, un monitoring avancé et une exploitation précise des données dosimétriques, avec une ergonomie inspirée des sondes stylet de référence.", card3_p2: "Un détecteur intelligent, compact et connecté, offrant une précision de mesure exceptionnelle. Associé à une application mobile, il permet un affichage en temps réel, un suivi continu et une analyse avancée des rayonnements, redéfinissant l’usage des sondes de type stylet en milieu clinique.",
+        card4_title: "DoseGrid - Radiamètres IoT", card4_p1: "Réseau intelligent de radiomètres connectés permettant une surveillance en temps réel, une acquisition distribuée et une cartographie automatisée des rayonnements, même dans les environnements les plus complexes.", card4_p2: "Système de monitoring sans fil basé sur un réseau de capteurs intelligents, offrant une visualisation en temps réel et une cartographie dynamique des niveaux de rayonnement pour une gestion optimisée des environnements complexes.",
+        card5_subtitle: "(L'alternative active aux puces passives traditionnelles)", card5_p1: "Le SmartDose NanoChip représente la nouvelle frontière de la dosimétrie d'intervention et de recherche. Conçu pour offrir une alternative moderne et performante aux puces OSL (ou TLD) conventionnelles, ce dosimètre actif ultra-miniaturisé combine la taille d'un capteur passif avec l'intelligence d'un système numérique en temps réel. Grâce à son architecture ultra-compacte, il s'intègre parfaitement dans les fantômes de la gamme PhantoRad ou se fixe directement sur les équipements pour un monitoring précis sans encombrement.",
+        view_btn: "Consulter", phone_label: "Tél./WhatsApp:", partner_label: "Partenaire", footer_rights: "© 2026 Dosirad — Tous droits réservés."
+      },
+      es: {
+        page_title: "Dosirad | Dosimetría activa de radiaciones ionizantes",
+        meta_description: "Dosirad - Soluciones de detección activa, dosimetría en tiempo real, IoT e instrumentación inteligente.",
+        nav_home: "Inicio", nav_solutions: "Productos", nav_technology: "Tecnología", nav_contact: "Contacto", language_label: "Idioma",
+        hero_badge: "Miniaturización • Instantaneidad • Conectividad Cloud • Nano sensores",
+        hero_title: "Dosimetría activa reinventada: más compacta, más asequible, manejable y económica",
+        hero_text: "Dosirad desarrolla soluciones inteligentes de detección activa para dosimetría móvil, monitorización conectada y cartografía automatizada, con una visión centrada en la miniaturización y el uso inmediato de los datos.",
+        hero_btn_solutions: "Descubrir soluciones", hero_btn_contact: "Contáctenos",
+        ecosystem_title: "Ecosistema Dosirad", ecosystem_1: "Sensores activos para medición instantánea", ecosystem_2: "Dosimetría en smartphone vía USB-C", ecosystem_3: "Radiómetros IoT conectados", ecosystem_4: "Robótica y cartografía",
+        solutions_title: "Instrumentación moderna", solutions_intro: "Dispositivos miniaturizados y conectados para transformar la lectura de radiación.",
+        solutions_1_label: 'Dosimetría Plug & Play', solutions_1_text: 'conexión USB-C sencilla.',
+        solutions_2_label: 'Nano sensores activos', solutions_2_text: 'tamaño ultrarreducido frente a los chips pasivos.',
+        solutions_3_label: 'Dosimetría 4.0', solutions_3_text: 'posicionada en la era de la salud conectada.',
+        solutions_4_label: 'Monitorización Live-Dose', solutions_4_text: 'un término más dinámico para el tiempo real.',
+        solutions_5_label: 'Radioprotección conectada', solutions_5_text: 'vincula la seguridad del personal con la dimensión IoT.',
+        solutions_6_label: 'Dosimetría de latencia cero', solutions_6_text: 'lectura instantánea sin los retrasos de OSL/TLD.',
+        solutions_7_label: 'Dosimetría nómada', solutions_7_text: 'el sistema puede utilizarse en cualquier lugar mediante smartphone.',
+        solutions_8_label: 'Interfaz centrada en la app', solutions_8_text: 'explotación inmediata de los datos en el móvil.',
+        technology_eyebrow: 'Tecnología', technology_title: 'Tecnologías avanzadas de detección de radiación', technology_intro: 'Tecnologías miniaturizadas y conectadas diseñadas para redefinir la monitorización de la radiación mediante inteligencia en tiempo real, movilidad y nano-sensores de nueva generación.', tech_card1_title: 'Dosimetría Plug & Play', tech_card1_text: 'Conectividad USB-C instantánea para un despliegue rápido sin procedimientos de instalación complejos.', tech_card2_title: 'Nano-sensores activos', tech_card2_text: 'Tecnología de detección activa ultraminiaturizada diseñada para superar los chips pasivos convencionales.', tech_card3_title: 'Monitorización Live-Dose', tech_card3_text: 'Visualización de la radiación en tiempo real con monitorización dinámica inteligente y respuesta inmediata.', tech_card4_title: 'Radioprotección conectada', tech_card4_text: 'Ecosistema inteligente de monitorización basado en IoT, dedicado a la seguridad del personal y a la vigilancia ambiental.', tech_card5_title: 'Dosimetría de latencia cero', tech_card5_text: 'Lectura inmediata de la radiación sin las limitaciones de espera de los sistemas OSL o TLD.', tech_card6_title: 'Interfaz centrada en la app', tech_card6_text: 'Arquitectura mobile-first que permite acceso directo, visualización y exportación de datos dosimétricos.',
+        card1_title: "SmartDose – Dosimetría móvil inteligente en tiempo real", card1_p1: "Una tecnología compacta y conectada que revoluciona la medición de radiación integrando rendimiento, movilidad e inteligencia directamente en su smartphone.", card1_p2: "Solución portátil de dosimetría conectada que ofrece lectura instantánea de radiación con precisión clínica, ideal para profesionales sanitarios y de radioprotección.",
+        card2_p1: "La interfaz digital indispensable para transformar su smartphone en un analizador de radiación de alta precisión. Centraliza los flujos de datos procedentes de sus sensores para una gestión proactiva e intuitiva de la dosis.", card2_p2: "Ofrece visualización instantánea (Live-Dose), gráficos dinámicos para identificar picos de exposición y gestión inteligente de alertas. La herramienta también permite exportar informes fácilmente (PDF/CSV) y sincronización cloud para una trazabilidad completa.",
+        card3_p1: "Detector inteligente de nueva generación, diseñado para mediciones finas y localizadas en entornos clínicos. Conectado al smartphone, permite visualización en tiempo real, monitorización avanzada y explotación precisa de los datos dosimétricos, con ergonomía inspirada en sondas tipo lápiz de referencia.", card3_p2: "Un detector inteligente, compacto y conectado, que ofrece una precisión de medición excepcional. Asociado a una aplicación móvil, permite visualización en tiempo real, seguimiento continuo y análisis avanzado de la radiación, redefiniendo el uso de sondas tipo lápiz en el ámbito clínico.",
+        card4_title: "DoseGrid - Radiómetros IoT", card4_p1: "Red inteligente de radiómetros conectados que permite monitorización en tiempo real, adquisición distribuida y cartografía automatizada de la radiación, incluso en los entornos más complejos.", card4_p2: "Sistema de monitorización inalámbrica basado en una red de sensores inteligentes, que ofrece visualización en tiempo real y cartografía dinámica de los niveles de radiación para una gestión optimizada de entornos complejos.",
+        card5_subtitle: "(La alternativa activa a los chips pasivos tradicionales)", card5_p1: "SmartDose NanoChip representa la nueva frontera de la dosimetría de intervención e investigación. Diseñado para ofrecer una alternativa moderna y eficaz a los chips OSL (o TLD) convencionales, este dosímetro activo ultraminiaturizado combina el tamaño de un sensor pasivo con la inteligencia de un sistema digital en tiempo real. Gracias a su arquitectura ultracompacta, se integra perfectamente en los fantomas de la gama PhantoRad o se fija directamente a los equipos para una monitorización precisa sin ocupar espacio.",
+        view_btn: "Ver", phone_label: "Tel./WhatsApp:", partner_label: "Socio", footer_rights: "© 2026 Dosirad — Todos los derechos reservados."
+      }
+    };
+
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const languageSelect = document.getElementById('languageSelect');
+
+    function applyLanguage(lang) {
+      const selected = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.title = selected.page_title;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', selected.meta_description);
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (selected[key]) element.textContent = selected[key];
+      });
+
+      localStorage.setItem('dosirad_language', lang);
+    }
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    languageSelect.addEventListener('change', (event) => {
+      applyLanguage(event.target.value);
+    });
+
+    const savedLanguage = localStorage.getItem('dosirad_language') || 'en';
+    languageSelect.value = savedLanguage;
+    applyLanguage(savedLanguage);
+  </script>
+</body>
+</html>
